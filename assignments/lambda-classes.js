@@ -72,3 +72,38 @@ class ProjectManager extends Instructor {
 
 
 }
+
+//Objects for Person
+
+const tim = new Person ({
+    name: "Tim",
+    age: 26,
+    location: "Nebraska"
+})
+
+const ray = new Person ({
+    name: "Ray",
+    age: 23,
+    location: "Nebraska"
+})
+
+console.log(tim);
+console.log(tim.speak());
+console.log(ray);
+console.log(ray.speak());
+
+
+//Objects for Instructor
+
+const teacher = new Instructor({
+    name: "John",
+    age: 50,
+    location: "Area 51",
+    specialty: "React",
+    favLanguage: "JavaScript",
+    catchPhrase: "Leeroyy Jennkins"
+})
+
+console.log(teacher);
+console.log(teacher.demo("The Art of Rescuing Aliens"));
+console.log(teacher.grade(tim, "The Art of Rescuing Aliens"));

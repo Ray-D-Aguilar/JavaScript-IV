@@ -22,12 +22,17 @@ class GameObject {
         this.createdAt = attributes.createdAt;
         this.name = attributes.name;
         this.dimensions = attributes.dimensions;
+
     }
+    destroy() {
+        return `${this.name} was removed from the game.`;
+    };
+
+
+
 }
 
-GameObject.prototype.destroy = function () {
-    return `${this.name} was removed from the game.`;
-}
+
 /*
   === GameObject ===
   * createdAt
@@ -37,22 +42,18 @@ GameObject.prototype.destroy = function () {
 */
 
 //Constructor function for CharacterStats
-class CharacterStats {
+class CharacterStats extends GameObject {
     constructor(CharAttr) {
+        super(CharAttr);
         this.healthPoints = CharAttr.healthPoints;
-        GameObject.call(this, CharAttr); //Binding this to GameObject
-
-        //prototype method for TakeDamage
-        CharacterStats.prototype.takeDamage = function () {
-            return `${this.name} took damage`;
-        }
     }
-};
+    //prototype method for TakeDamage
+    takeDamage() {
+        return `${this.name} took damage`;
+    }
 
+}
 
-
-// Letting CharacterStats know about GameObject
-CharacterStats.prototype = Object.create(GameObject.prototype);
 
 /*
   === CharacterStats ===
@@ -61,25 +62,19 @@ CharacterStats.prototype = Object.create(GameObject.prototype);
   * should inherit destroy() from GameObject's prototype
 */
 
-class Humanoid {
+class Humanoid extends CharacterStats {
     constructor(humaniodAttr) {
+        super(humaniodAttr);
         this.team = humaniodAttr.team;
         this.weapons = humaniodAttr.weapons;
         this.language = humaniodAttr.language;
-        CharacterStats.call(this, humaniodAttr);//Binding this to CharacterStats
-
-        Humanoid.prototype.greet = function () {
-            return `${this.name} offers a greeting in ${this.language}`;
-        }
-
     }
+    greet() {
+        return `${this.name} offers a greeting in ${this.language}`;
+    }
+
+
 }
-
-//prototype Method for greet
-
-
-//Letting Humanoid know about CharacterStats
-Humanoid.prototype = Object.create(CharacterStats.prototype);
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===

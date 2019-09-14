@@ -42,7 +42,9 @@ class Student extends Person {
   }    
 
   listsSubjects() {
-      console.log("placeholder");
+      for(let i = 0; i < this.favSubjects.length; i+++) {
+          
+      }
   }
 
   PRAssignment(subject) {
@@ -107,3 +109,17 @@ const teacher = new Instructor({
 console.log(teacher);
 console.log(teacher.demo("The Art of Rescuing Aliens"));
 console.log(teacher.grade(tim, "The Art of Rescuing Aliens"));
+
+//Objects for Student
+
+const studentAlex = new Student ({
+    name: "Alex",
+    age: 19,
+    location: "Oregon",
+    previousBackground: "Worked in a deli at Walmart",
+    className: "PTWeb22",
+    favSubjects: ["Html", "Css", "React"]
+})
+
+console.log(studentAlex);
+console.log(studentAlex.listsSubjects());
